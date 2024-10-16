@@ -1,0 +1,184 @@
+.modalTitle {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.modalSupportText {
+  font-weight: 400;
+  line-height: 1.37;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 20px;
+}
+
+.teacherInfo {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.teacherAvatarThumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.teacherTextHintTextName {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+}
+
+.teacherTextHint {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8a8a89;
+}
+
+.teacherName {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.errorMessage {
+  color: #ff3333;
+  margin-bottom: 10px;
+}
+
+.bookLessonForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.textQuestion {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.33;
+  margin-bottom: 20px;
+}
+
+.radioButtonsWrapper {
+  margin-bottom: 40px;
+}
+
+.radioButtonsWrapperWithError {
+  margin-bottom: 20px;
+}
+
+.radioButtonWrapper {
+  display: flex;
+}
+
+.radioButtonWrapper:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.labelWrapperCustomRadioBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  line-height: 1.37;
+  cursor: pointer;
+}
+
+.customRadioBtn {
+  border: 2px solid rgba(18, 20, 23, 0.2);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 50%;
+  position: relative;
+  transition: border 150ms ease;
+}
+
+.customRadioBtn::before {
+  background-color: transparent;
+  opacity: 0;
+  transition: all 150ms ease;
+}
+
+.radioButton:checked + label .customRadioBtn {
+  border: 2px solid #9fb7ce;
+}
+
+.radioButton:checked + label .customRadioBtn::before {
+  content: '';
+  display: inline-block;
+  background-color: #9fb7ce;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.fullNameInput {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 54px;
+  margin-bottom: 18px;
+}
+
+.fullNameInputHasError {
+  color: #ff3333;
+  border: 1px solid #ff3333;
+  margin-bottom: 10px;
+}
+
+.emailInput {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 54px;
+  margin-bottom: 18px;
+}
+
+.emailInputHasError {
+  color: #ff3333;
+  border: 1px solid #ff3333;
+  margin-bottom: 10px;
+}
+
+.telephoneInput {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 54px;
+  margin-bottom: 40px;
+}
+
+.telephoneInputHasError {
+  color: #ff3333;
+  border: 1px solid #ff3333;
+  margin-bottom: 10px;
+}
+
+.telephoneInputHasError + span.errorMessage {
+  margin-bottom: 40px;
+}
+
+.btnSubmit {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.56;
+  padding: 16px 0;
+  background-color: #9fb7ce;
+  transition: background-color 250ms ease;
+  border-radius: 12px;
+}
+
+.btnSubmit:hover,
+.btnSubmit:focus,
+.btnSubmit:active {
+  background-color: #b8cee2;
+}

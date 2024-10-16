@@ -1,0 +1,164 @@
+::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 12px;
+  height: 50%;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 12px;
+  height: 50px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 12px;
+  height: 50%;
+  background-color: #121417;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.filtersForm select {
+  display: none;
+}
+
+.filtersForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.formFieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formFieldWrapper:nth-child(1) {
+  max-width: 220px;
+}
+
+.formFieldWrapper:nth-child(2) {
+  max-width: 198px;
+}
+
+.formFieldWrapper:nth-child(3) {
+  max-width: 124px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #8a8a89;
+}
+
+.dropdownSelectWrapper {
+  position: relative;
+}
+
+.selectInputWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.selectInput {
+  width: 100%;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  background-color: #ffffff;
+  padding: 14px 34px 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.chevronIcon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  fill: transparent;
+  stroke: #121417;
+  cursor: pointer;
+}
+
+.chevronIcon.isActive {
+  transform: rotateY(180);
+}
+
+.dropdownSelect {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  background-color: #ffffff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  max-height: 220px;
+  overflow: auto;
+  z-index: 1;
+  transition: top 150ms ease-in-out, opacity 150ms ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  pointer-events: none;
+}
+
+.dropdownSelect.isActive {
+  top: 110%;
+  opacity: 1;
+  pointer-events: all;
+  z-index: 3;
+}
+
+.customOption {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: rgba(18, 20, 23, 0.2);
+  cursor: pointer;
+}
+
+.customOption.selected {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  color: rgba(18, 20, 23, 0.2);
+  color: #121417;
+}
+
+.resetFiltersBtn {
+  background-color: transparent;
+  font-size: 18px;
+  align-self: flex-end;
+  border: 1px solid #121417;
+  border-radius: 12px;
+  padding: 14px 10px;
+}
+
+/* ======== */
+
+/* .selectLevel {
+    padding: 14px 30px 14px 18px;
+    background-position: top 50% right 14px;
+    width: 198px;
+  }
+  
+  .selectPrice {
+    padding: 14px 40px 14px 18px;
+    background-position: top 50% right 18px;
+    width: 124px;
+  }
+  
+  .filtersForm option {
+    border-radius: 30px;
+  } */

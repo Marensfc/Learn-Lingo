@@ -1,0 +1,155 @@
+.mobMenuBtn {
+  width: 40px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  display: none;
+}
+
+.mobMenuIcon {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2px;
+}
+
+.mobMenuContentWrapper {
+  opacity: 1;
+  pointer-events: none;
+  transform: translateX(100%);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 50%;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(159, 162, 161, 1) 0%,
+    rgba(191, 214, 234, 1) 100%
+  );
+  transition: transform 250ms ease-in-out;
+  padding: 60px 20px;
+}
+
+.mobMenuContentWrapper.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+
+.closeModalBtn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.closeModalIcon {
+  fill: black;
+  stroke: black;
+}
+
+.mobMenuUserMenuWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.userInfoWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.userIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.userName {
+  font-size: 24px;
+}
+
+.logoutBtn {
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  background-color: #121417;
+  border-radius: 12px;
+  padding: 14px 40px;
+  transition: background-color 150ms ease, color 150ms ease, outline 150ms ease;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus,
+.logoutBtn:active {
+  background-color: transparent;
+  color: #121417;
+  outline: 1px solid #121417;
+}
+
+.mobMenuLinksList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.mobMenuLink {
+  font-size: 30px;
+}
+
+.mobMenuAuthButtonsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.loginButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  line-height: 1.25;
+  background-color: transparent;
+  position: relative;
+}
+
+.registrationButton {
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  background-color: #121417;
+  border-radius: 12px;
+  padding: 14px 40px;
+  transition: background-color 150ms ease, color 150ms ease, outline 150ms ease;
+}
+
+.registrationButton:hover {
+  background-color: transparent;
+  color: #121417;
+  outline: 1px solid #121417;
+}
+
+@media screen and (max-width: 560px) {
+  .mobMenuContentWrapper {
+    min-width: 100%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .mobMenuBtn {
+    display: block;
+  }
+}

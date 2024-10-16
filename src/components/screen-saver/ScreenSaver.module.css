@@ -1,0 +1,71 @@
+.hintText {
+  color: #6a6f77;
+  font-size: 28px;
+  text-align: center;
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.accentWords {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.teachersLink {
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 400;
+  color: #121417;
+  transition: color 0.2s ease;
+  padding: 3px 0;
+  margin-bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.teachersLink:hover {
+  color: #6a6f77;
+}
+.teachersLink:hover::after,
+.teachersLink:hover::before {
+  width: 100%;
+  left: 0;
+}
+.teachersLink::after,
+.teachersLink::before {
+  content: '';
+  position: absolute;
+  top: calc(100% + 5px);
+  width: 0;
+  right: 0;
+  height: 3px;
+}
+.teachersLink::before {
+  transition: width 0.4s cubic-bezier(0.51, 0.18, 0, 0.88) 0.1s;
+  background: #9fb7ce;
+}
+.teachersLink::after {
+  transition: width 0.2s cubic-bezier(0.29, 0.18, 0.26, 0.83);
+  background: #121417;
+}
+
+@media screen and (max-width: 560px) {
+  .hintText {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 300;
+  }
+  .teachersLink {
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 400;
+    color: #121417;
+    transition: color 0.2s ease;
+    padding: 3px 0;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}

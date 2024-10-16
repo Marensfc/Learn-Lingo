@@ -1,0 +1,303 @@
+.teacherCard {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 24px;
+  display: flex;
+  column-gap: 48px;
+  row-gap: 20px;
+  position: relative;
+}
+
+.teacherAvatarThumb {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fbe9ba;
+  padding: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.teacherAvatarThumb > img {
+  border-radius: 50%;
+}
+
+.teacherAvatarThumb::after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #38cd3e;
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.cardAddToFavoritesBtn {
+  background-color: transparent;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+}
+
+.favoritesIcon {
+  fill: transparent;
+  stroke: #121417;
+}
+
+.selected {
+  fill: #9fb7ce;
+  stroke: #9fb7ce;
+}
+
+.cardInfo_StatisticsWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  row-gap: 5px;
+  margin-right: 90px;
+  column-gap: 192px;
+}
+
+.cardInfoStatistics {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  row-gap: 10px;
+  justify-content: center;
+}
+
+.info_StatisticFieldOfStudy {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.info_StatisticsLessonsFormat,
+.info_StatisticsLessonsCount,
+.info_StatisticsRating,
+.info_StatisticsPrice {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.bookIcon {
+  fill: transparent;
+  stroke: #000000;
+}
+
+.info_StatisticsLessonsFormat,
+.info_StatisticsRating {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.info_StatisticsPrice > span {
+  color: #38cd3e;
+}
+
+.cardTeacherName {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+
+.cardSpokenLanguages {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #8a8a89;
+  margin-bottom: 8px;
+}
+
+.cardSpokenLanguages > span {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+}
+
+.cardLessonInfo {
+  margin-bottom: 8px;
+}
+
+.cardConditions {
+  margin-bottom: 16px;
+}
+
+.cardLessonInfo,
+.cardConditions {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.cardLessonInfo > span,
+.cardConditions > span {
+  color: #121417;
+}
+
+.teacherExperience {
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.reviewerIconNameRatingWrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.reviewIconContainer {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  background-color: rgb(236, 236, 236);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviewerIcon {
+  fill: #121417;
+}
+
+.reviewerNameRatingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewerName {
+  font-weight: 500;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.reviewerRating {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reviewerComment {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.cardBtnReadMore {
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+  padding: 0;
+  background-color: transparent;
+  margin-bottom: 32px;
+}
+
+.cardLevels {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cardLevel {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+}
+
+.cardLevel.selectedLevel {
+  border: none;
+  background-color: #9fb7ce;
+}
+
+.bookLessonBtn {
+  margin-top: 32px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.56;
+  background-color: #9fb7ce;
+  padding: 16px 48px;
+  border-radius: 12px;
+  transition: background-color 250ms ease;
+}
+
+.bookLessonBtn:hover,
+.bookLessonBtn:focus,
+.bookLessonBtn:active {
+  background-color: #b8cee2;
+}
+
+@media screen and (max-width: 425px) {
+  .teacherAvatarThumb {
+    width: 100px;
+    height: 100px;
+  }
+  .cardInfoStatistics > p {
+    font-size: 14px;
+  }
+  .cardTeacherName {
+    font-size: 20px;
+  }
+  .cardSpokenLanguages {
+    font-size: 14px;
+  }
+  .cardLessonInfo {
+    font-size: 14px;
+  }
+  .cardConditions {
+    font-size: 14px;
+  }
+  .teacherExperience {
+    font-size: 12px;
+  }
+  .reviewerComment {
+    font-size: 14px;
+  }
+  .cardLevel {
+    font-size: 10px;
+  }
+  .bookLessonBtn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .teacherCard {
+    flex-wrap: wrap;
+  }
+  .cardInfo_StatisticsWrapper {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .teacherCard {
+    justify-content: center;
+  }
+}

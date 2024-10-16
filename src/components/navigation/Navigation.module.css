@@ -1,0 +1,16 @@
+.headerNavList {
+  display: flex;
+  gap: 28px;
+}
+
+.headerNavLink {
+  line-height: 1.25;
+  display: inline-block;
+  padding: 14px 0;
+}
+
+@media screen and (max-width: 960px) {
+  .headerNav {
+    display: none;
+  }
+}

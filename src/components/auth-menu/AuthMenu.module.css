@@ -1,0 +1,36 @@
+.headerAuthButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.loginButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  line-height: 1.25;
+  background-color: transparent;
+  position: relative;
+}
+
+.registrationButton {
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  background-color: #121417;
+  border-radius: 12px;
+  padding: 14px 40px;
+  transition: background-color 150ms ease, color 150ms ease, outline 150ms ease;
+}
+
+.registrationButton:hover {
+  background-color: transparent;
+  color: #121417;
+  outline: 1px solid #121417;
+}
+
+@media screen and (max-width: 960px) {
+  .headerAuthButtons {
+    display: none;
+  }
+}

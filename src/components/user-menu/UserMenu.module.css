@@ -1,0 +1,47 @@
+.userMenuWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.userInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.userIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.userName {
+  color: #8e8e8e;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.logoutBtn {
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  background-color: #121417;
+  border-radius: 12px;
+  padding: 14px 40px;
+  transition: background-color 150ms ease, color 150ms ease, outline 150ms ease;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus,
+.logoutBtn:active {
+  background-color: transparent;
+  color: #121417;
+  outline: 1px solid #121417;
+}
+
+@media screen and (max-width: 960px) {
+  .userMenuWrapper {
+    display: none;
+  }
+}
