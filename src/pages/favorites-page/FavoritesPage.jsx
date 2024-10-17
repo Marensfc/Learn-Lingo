@@ -10,6 +10,13 @@ import { useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal';
 import { setBodyBgColor } from '../../utils/setBodyBgColor';
 
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectLanguage,
+  selectLevel,
+  selectPricePerHour,
+} from '../../redux/filters/selectors';
+
 import { auth } from '../../api/firebaseInit';
 import {
   getUserFavoriteTeachers,
@@ -28,12 +35,37 @@ const FavoritesPage = () => {
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const filters = {
+    language: useSelector(selectLanguage),
+    level: useSelector(selectLevel),
+    price_per_hour: useSelector(selectPricePerHour),
+  };
+
+  const isThereAnyFilter = Object.values(filters).find(
+    filter => filter !== 'All'
+  );
+
   useEffect(() => {
     setIsLoading(true);
     const loadFavoriteTeachers = async () => {
       try {
         const response = await getUserFavoriteTeachers(auth.currentUser.uid);
-        setFavoriteTeachers(response);
+        if (isThereAnyFilter) {
+          const filteredTeachers = response
+            .filter(
+              teacher =>
+                (teacher.languages.includes(filters.language) ||
+                  filters.language === 'All') &&
+                (teacher.levels.includes(filters.level) ||
+                  filters.level === 'All') &&
+                (teacher.price_per_hour <= filters.price_per_hour ||
+                  filters.price_per_hour === 'All')
+            )
+            .reverse();
+          setFavoriteTeachers(filteredTeachers);
+          return;
+        }
+        setFavoriteTeachers(response.reverse());
       } catch (error) {
         toast.error(error.message);
         return;
@@ -42,7 +74,7 @@ const FavoritesPage = () => {
       }
     };
     loadFavoriteTeachers();
-  }, []);
+  }, [filters.language, filters.level, filters.price_per_hour]);
 
   const addTeacherToFavorite = async teacher => {
     const newList = [...favoriteTeachers, teacher];

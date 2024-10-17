@@ -62,10 +62,7 @@ const TeacherPage = () => {
   };
 
   const [showBtn, setShowBtn] = useState(false);
-  const [filtersPageParams, setfiltersPageParams] = useState({
-    page: 1,
-    newFilter: '',
-  });
+  const [page, setPage] = useState(1);
   const perPage = 4;
   const totalPages = useRef();
 
@@ -75,18 +72,10 @@ const TeacherPage = () => {
     const load = async (fetchDataFunction = fetchTeachers) => {
       setShowBtn(false);
       try {
-        if (filtersPageParams.page === 1) {
+        if (page === 1) {
           const data = await dispatch(
-            fetchDataFunction(
-              calculatePaginationParams(
-                perPage,
-                filtersPageParams.page,
-                filters
-              )
-            )
+            fetchDataFunction(calculatePaginationParams(perPage, page, filters))
           ).unwrap();
-
-          console.log(data);
 
           if (data.items.length === 0) {
             toast.info(
@@ -104,15 +93,9 @@ const TeacherPage = () => {
           setShowBtn(true);
           return;
         }
-        if (filtersPageParams.page > 1) {
+        if (page > 1) {
           const data = await dispatch(
-            fetchDataFunction(
-              calculatePaginationParams(
-                perPage,
-                filtersPageParams.page,
-                filters
-              )
-            )
+            fetchDataFunction(calculatePaginationParams(perPage, page, filters))
           ).unwrap();
 
           totalPages.current -= 1;
@@ -143,7 +126,7 @@ const TeacherPage = () => {
     }
 
     load(fetchTeachers);
-  }, [filtersPageParams, dispatch]);
+  }, [page, filters.language, filters.level, filters.price_per_hour, dispatch]);
 
   const [favoriteTeachers, setFavoriteTeachers] = useState([]);
 
@@ -188,9 +171,7 @@ const TeacherPage = () => {
     <>
       <section style={{ paddingTop: '10px' }}>
         <div className="container">
-          <FiltersForm
-            setNewFilter={filters => setfiltersPageParams({ page: 1, filters })}
-          />
+          <FiltersForm setPageToFirst={() => setPage(1)} />
           <TeachersList
             teachers={teachers.items}
             openModal={bookLessonModal.openModal}
@@ -202,14 +183,7 @@ const TeacherPage = () => {
           />
           {teachers.isLoading && <Loader />}
           {showBtn && (
-            <LoadMoreBtn
-              increasePageFunction={() =>
-                setfiltersPageParams({
-                  ...filtersPageParams,
-                  page: filtersPageParams.page + 1,
-                })
-              }
-            />
+            <LoadMoreBtn increasePageFunction={() => setPage(page + 1)} />
           )}
         </div>
       </section>

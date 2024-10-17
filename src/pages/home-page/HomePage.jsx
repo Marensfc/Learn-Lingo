@@ -1,5 +1,5 @@
 import css from './HomePage.module.css';
-import heroImg from '../../assets/hero-img.jpg';
+import heroImg from '../../assets/students.jpg';
 
 import { Link } from 'react-router-dom';
 import { setBodyBgColor } from '../../utils/setBodyBgColor';

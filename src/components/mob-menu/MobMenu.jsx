@@ -6,8 +6,12 @@ import { FiMenu } from 'react-icons/fi';
 import { FaCircleUser } from 'react-icons/fa6';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn, selectUserName } from '../../redux/auth/selectors';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { logout } from '../../redux/auth/operations';
+
+const createClassForNavLink = isActive => {
+  return isActive ? `${css.mobMenuLink} ${css.active}` : css.mobMenuLink;
+};
 
 const MobMenu = ({ openLoginModal, openRegisterModal }) => {
   const dispatch = useDispatch();
@@ -70,20 +74,29 @@ const MobMenu = ({ openLoginModal, openRegisterModal }) => {
         <nav>
           <ul className={css.mobMenuLinksList} onClick={toggleOpenMobMenu}>
             <li>
-              <Link className={css.mobMenuLink} to="/">
+              <NavLink
+                className={({ isActive }) => createClassForNavLink(isActive)}
+                to="/"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className={css.mobMenuLink} to="/teachers">
+              <NavLink
+                className={({ isActive }) => createClassForNavLink(isActive)}
+                to="/teachers"
+              >
                 Teachers
-              </Link>
+              </NavLink>
             </li>
             {isLoggedIn && (
               <li>
-                <Link className={css.mobMenuLink} to="/favorites">
+                <NavLink
+                  className={({ isActive }) => createClassForNavLink(isActive)}
+                  to="/favorites"
+                >
                   Favorites
-                </Link>
+                </NavLink>
               </li>
             )}
           </ul>

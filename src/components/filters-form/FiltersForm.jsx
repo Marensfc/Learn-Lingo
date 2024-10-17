@@ -15,11 +15,15 @@ import {
   setPricePerHour,
 } from '../../redux/filters/slice';
 import { createClass } from '../../utils/createClass';
+import { useLocation } from 'react-router-dom';
 
-const FiltersForm = ({ setNewFilter }) => {
+const FiltersForm = ({ setPageToFirst }) => {
   const fieldLanguagesId = useId();
   const fieldLevelsId = useId();
   const fieldPriceId = useId();
+
+  const { pathname } = useLocation();
+  const isFavoritePage = pathname === '/favorites';
 
   const inputsRefs = {
     inputLanguage: useRef(),
@@ -51,15 +55,18 @@ const FiltersForm = ({ setNewFilter }) => {
       const filters = {
         setLanguage: () => {
           dispatch(setLanguage(e.target.textContent));
-          setNewFilter(e.target.textContent);
+          if (isFavoritePage) return;
+          setPageToFirst();
         },
         setLevel: () => {
           dispatch(setLevel(e.target.textContent));
-          setNewFilter(e.target.textContent);
+          if (isFavoritePage) return;
+          setPageToFirst();
         },
         setPricePerHour: () => {
           dispatch(setPricePerHour(Number(e.target.textContent)));
-          setNewFilter(e.target.textContent);
+          if (isFavoritePage) return;
+          setPageToFirst();
         },
       };
 
@@ -80,8 +87,13 @@ const FiltersForm = ({ setNewFilter }) => {
 
     if (areAllFieldReseted) return;
 
+    if (isFavoritePage) {
+      dispatch(resetFilters());
+      return;
+    }
+
     dispatch(resetFilters());
-    setNewFilter('All');
+    setPageToFirst();
   };
 
   useEffect(() => {
