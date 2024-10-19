@@ -44,7 +44,7 @@ const FiltersForm = ({ setPageToFirst }) => {
 
   const handleToggleInputOnClick = currentTab => {
     currentTab.classList.toggle(css.isActive);
-    const otherTabs = Object.values(dropdownSelectsRefs).filter(
+    Object.values(dropdownSelectsRefs).filter(
       tab =>
         tab.current !== currentTab && tab.current.classList.remove(css.isActive)
     );
@@ -111,19 +111,19 @@ const FiltersForm = ({ setPageToFirst }) => {
       const inputs = Object.values(inputsRefs);
 
       const openedTab = tabs.find(tab =>
-        tab.current.classList.contains(css.isActive)
+        tab.current?.classList.contains(css.isActive)
       );
 
       if (!openedTab) return;
 
-      const isInAnyTab = tabs.find(tab => tab.current.contains(e.target));
+      const isInAnyTab = tabs.find(tab => tab.current?.contains(e.target));
 
       const isAnyInput = inputs.find(tab =>
-        tab.current.parentElement.contains(e.target)
+        tab.current?.parentElement.contains(e.target)
       );
 
       if (!isInAnyTab && !isAnyInput) {
-        openedTab.current.classList.remove(css.isActive);
+        openedTab.current?.classList.remove(css.isActive);
         return;
       }
     };
@@ -133,7 +133,7 @@ const FiltersForm = ({ setPageToFirst }) => {
     return () => {
       document.removeEventListener('click', handlerOnClick);
     };
-  }, [dropdownSelectsRefs.language, inputsRefs.inputLanguage]);
+  }, []);
 
   return (
     <form className={css.filtersForm}>

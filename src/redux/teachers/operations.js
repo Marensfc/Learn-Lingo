@@ -39,41 +39,46 @@ export const fetchTeachers = createAsyncThunk(
 export const fetchFilteredTeachers = createAsyncThunk(
   'teachers/fetchFilteredItems',
   async (paginationParams, thunkApi) => {
-    if (paginationParams.isFirstPage) {
-      const filters = {
-        language: paginationParams.filters.language,
-        level: paginationParams.filters.level,
-        price_per_hour: paginationParams.filters.price_per_hour,
-      };
+    try {
+      if (paginationParams.isFirstPage) {
+        const filters = {
+          language: paginationParams.filters.language,
+          level: paginationParams.filters.level,
+          price_per_hour: paginationParams.filters.price_per_hour,
+        };
 
-      const allTeachers = await axios.get(
-        `${REACT_APP_DATABASE_URL}/teachers.json`
-      );
+        const allTeachers = await axios.get(
+          `${REACT_APP_DATABASE_URL}/teachers.json`
+        );
 
-      const filteredTeachers = allTeachers.data.filter(
-        teacher =>
-          (teacher.languages.includes(filters.language) ||
-            filters.language === 'All') &&
-          (teacher.levels.includes(filters.level) || filters.level === 'All') &&
-          (teacher.price_per_hour <= filters.price_per_hour ||
-            filters.price_per_hour === 'All')
-      );
+        const filteredTeachers = allTeachers.data.filter(
+          teacher =>
+            (teacher.languages.includes(filters.language) ||
+              filters.language === 'All') &&
+            (teacher.levels.includes(filters.level) ||
+              filters.level === 'All') &&
+            (teacher.price_per_hour <= filters.price_per_hour ||
+              filters.price_per_hour === 'All')
+        );
 
-      return {
-        items: filteredTeachers,
-        startAt: paginationParams.startAt,
-        endAt: paginationParams.endAt,
-        totalPages:
-          Math.ceil(filteredTeachers.length / paginationParams.perPage) - 1,
-        isFirstPage: paginationParams.isFirstPage,
-      };
-    }
-    if (!paginationParams.isFirstPage) {
-      return {
-        startAt: paginationParams.startAt,
-        endAt: paginationParams.endAt,
-        isFirstPage: false,
-      };
+        return {
+          items: filteredTeachers,
+          startAt: paginationParams.startAt,
+          endAt: paginationParams.endAt,
+          totalPages:
+            Math.ceil(filteredTeachers.length / paginationParams.perPage) - 1,
+          isFirstPage: paginationParams.isFirstPage,
+        };
+      }
+      if (!paginationParams.isFirstPage) {
+        return {
+          startAt: paginationParams.startAt,
+          endAt: paginationParams.endAt,
+          isFirstPage: false,
+        };
+      }
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

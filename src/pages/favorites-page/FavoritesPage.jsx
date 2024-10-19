@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal';
 import { setBodyBgColor } from '../../utils/setBodyBgColor';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   selectLanguage,
   selectLevel,
@@ -23,6 +23,8 @@ import {
   getUserFavoriteTeachers,
   updateFavoriteTeachersInFirebase,
 } from '../../api/firebaseFunctions';
+
+import { toast } from 'react-toastify';
 
 const FavoritesPage = () => {
   setBodyBgColor('#f8f8f8');
@@ -44,8 +46,6 @@ const FavoritesPage = () => {
   );
 
   useEffect(() => {
-    console.log('useEffect works');
-
     setIsLoading(true);
     const loadFavoriteTeachers = async () => {
       try {
@@ -74,7 +74,12 @@ const FavoritesPage = () => {
       }
     };
     loadFavoriteTeachers();
-  }, [filters.language, filters.level, filters.price_per_hour]);
+  }, [
+    filters.language,
+    filters.level,
+    filters.price_per_hour,
+    isThereAnyFilter,
+  ]);
 
   const addTeacherToFavorite = async teacher => {
     const newList = [...favoriteTeachers, teacher];

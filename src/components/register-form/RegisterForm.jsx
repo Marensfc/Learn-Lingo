@@ -59,7 +59,7 @@ const RegisterForm = ({ closeModal }) => {
     setIsLoading(true);
     dispatch(signUp(data))
       .unwrap()
-      .then(resp => {
+      .then(() => {
         reset();
         closeModal();
         toast.success('Registration is successful!');

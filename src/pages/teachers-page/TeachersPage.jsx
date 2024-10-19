@@ -66,8 +66,6 @@ const TeacherPage = () => {
   const totalPages = useRef();
 
   useEffect(() => {
-    console.log('useEffect works');
-
     const load = async (fetchDataFunction = fetchTeachers) => {
       setShowBtn(false);
       try {

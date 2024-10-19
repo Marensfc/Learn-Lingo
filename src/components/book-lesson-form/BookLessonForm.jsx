@@ -58,7 +58,7 @@ const BookLessonForm = ({ teacherInfo, closeModal }) => {
     defaultValues: { reason: '', fullName: '', email: '', phoneNumber: '' },
   });
 
-  const onSubmit = data => {
+  const onSubmit = () => {
     reset();
     closeModal();
     toast.success(
