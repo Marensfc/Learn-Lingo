@@ -6,7 +6,9 @@ import * as yup from 'yup';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../redux/auth/operations';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
+import { ThreeDots } from 'react-loader-spinner';
 
 const registerSchema = yup.object().shape({
   name: yup
@@ -50,14 +52,20 @@ const RegisterForm = ({ closeModal }) => {
   const svgEyeTogglePasswordVisibility = useRef();
 
   const dispatch = useDispatch();
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = async data => {
-    try {
-      dispatch(signUp(data)).unwrap();
-      closeModal();
-      reset();
-    } catch (error) {
-      console.log(error.message);
-    }
+    setIsLoading(true);
+    dispatch(signUp(data))
+      .unwrap()
+      .then(resp => {
+        reset();
+        closeModal();
+        toast.success('Registration is successful!');
+      })
+      .catch(error => toast.error(error))
+      .finally(() => setIsLoading(false));
   };
 
   const handleOnClickTogglePasswordVisibility = () => {
@@ -143,8 +151,25 @@ const RegisterForm = ({ closeModal }) => {
             {errors.password.message}
           </span>
         )}
-        <button type="submit" className={css.btnSubmit}>
-          Sign Up
+        <button
+          type="submit"
+          className={css.btnSubmit}
+          disabled={isLoading ? true : false}
+        >
+          {isLoading ? (
+            <ThreeDots
+              visible={true}
+              height="100%"
+              width="60"
+              color="#ffffff"
+              radius="9"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{ display: 'block', height: '100%' }}
+              wrapperClass={css.btnLoader}
+            />
+          ) : (
+            'Sign Up'
+          )}
         </button>
       </form>
     </>

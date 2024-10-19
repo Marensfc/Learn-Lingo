@@ -1,0 +1,57 @@
+.scrollBtn {
+  width: 80px;
+  height: 80px;
+  background-color: #9fb7ce;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 4px;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out, background-color 150ms ease-in-out;
+  pointer-events: none;
+}
+
+.scrollBtn:hover,
+.scrollBtn:focus,
+.scrollBtn:active {
+  background-color: #b8cee2;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.arrowIcon {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+@media screen and (max-width: 568px) {
+  .scrollBtn {
+    width: 50px;
+    height: 50px;
+  }
+  .arrowIcon {
+    width: 25px;
+    height: 25px;
+    fill: white;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .scrollBtn {
+    width: 40px;
+    height: 40px;
+    right: 0;
+  }
+  .arrowIcon {
+    width: 20px;
+    height: 20px;
+    fill: white;
+  }
+}

@@ -27,3 +27,9 @@
     font-size: 16px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .headerContainer {
+    padding: 0 32px;
+  }
+}

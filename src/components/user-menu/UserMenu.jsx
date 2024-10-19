@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations';
 import { useSelector } from 'react-redux';
 import { selectUserName } from '../../redux/auth/selectors';
+import { toast } from 'react-toastify';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,10 @@ const UserMenu = () => {
       <button
         type="button"
         className={css.logoutBtn}
-        onClick={() => dispatch(logout())}
+        onClick={() => {
+          dispatch(logout());
+          toast.success('Logout is successful!');
+        }}
       >
         Logout
       </button>

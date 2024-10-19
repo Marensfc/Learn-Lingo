@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn, selectUserName } from '../../redux/auth/selectors';
 import { NavLink } from 'react-router-dom';
 import { logout } from '../../redux/auth/operations';
+import { toast } from 'react-toastify';
 
 const createClassForNavLink = isActive => {
   return isActive ? `${css.mobMenuLink} ${css.active}` : css.mobMenuLink;
@@ -65,6 +66,7 @@ const MobMenu = ({ openLoginModal, openRegisterModal }) => {
                 dispatch(logout());
                 mobMenuContentRef.current.classList.remove(css.active);
                 document.querySelector('body').style.removeProperty('overflow');
+                toast.success('Logout is successful!');
               }}
             >
               Logout

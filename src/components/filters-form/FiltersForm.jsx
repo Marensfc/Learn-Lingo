@@ -56,16 +56,25 @@ const FiltersForm = ({ setPageToFirst }) => {
         setLanguage: () => {
           dispatch(setLanguage(e.target.textContent));
           if (isFavoritePage) return;
+          if (window.screen.width <= 960) {
+            e.currentTarget.classList.remove(css.isActive);
+          }
           setPageToFirst();
         },
         setLevel: () => {
           dispatch(setLevel(e.target.textContent));
           if (isFavoritePage) return;
+          if (window.screen.width <= 960) {
+            e.currentTarget.classList.remove(css.isActive);
+          }
           setPageToFirst();
         },
         setPricePerHour: () => {
           dispatch(setPricePerHour(Number(e.target.textContent)));
           if (isFavoritePage) return;
+          if (window.screen.width <= 960) {
+            e.currentTarget.classList.remove(css.isActive);
+          }
           setPageToFirst();
         },
       };

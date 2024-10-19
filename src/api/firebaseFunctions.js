@@ -52,7 +52,7 @@ export const getUserFavoriteTeachers = async userId => {
         }
         return snapshot.val();
       } else {
-        console.log('No data available');
+        return [];
       }
     })
     .catch(error => {

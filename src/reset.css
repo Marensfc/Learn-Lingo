@@ -74,15 +74,15 @@ input {
   pointer-events: none;
 }
 
+@media screen and (max-width: 560px) {
+  .container {
+    padding: 0 32px;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .container {
     min-width: auto;
     padding: 0 16px;
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .container {
-    padding: 0 32px;
   }
 }

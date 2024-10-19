@@ -3,11 +3,13 @@ import TeachersList from '../../components/teachers-list/TeachersList';
 import BookLessonModal from '../../components/book-lesson-modal/BookLessonModal';
 import Loader from '../../components/loader/Loader';
 import LoadMoreBtn from '../../components/load-more-btn/LoadMoreBtn';
+import ScrollBtn from '../../components/scroll-btn/ScrollBtn';
 
 import { useRef, useState, useEffect } from 'react';
 import { useModal } from '../../hooks/useModal';
 import { calculatePaginationParams } from '../../utils/calculatePaginationParams';
 import { setBodyBgColor } from '../../utils/setBodyBgColor';
+import { toast } from 'react-toastify';
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -27,9 +29,6 @@ import {
   selectLevel,
   selectPricePerHour,
 } from '../../redux/filters/selectors';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../api/firebaseInit';
@@ -89,6 +88,7 @@ const TeacherPage = () => {
             );
             return;
           }
+
           totalPages.current = data.totalPages;
           setShowBtn(true);
           return;
@@ -105,12 +105,11 @@ const TeacherPage = () => {
             );
             return;
           }
+
           setShowBtn(true);
           return;
         }
       } catch (error) {
-        console.log(error);
-
         toast.error(error.message);
         setShowBtn(false);
       }
@@ -179,7 +178,6 @@ const TeacherPage = () => {
             addTeacher={addTeacherToFavorite}
             deleteTeacher={deleteTeacherFromFavorite}
             checkIsSelected={checkIsSelected}
-            toast={toast}
           />
           {teachers.isLoading && <Loader />}
           {showBtn && (
@@ -187,23 +185,11 @@ const TeacherPage = () => {
           )}
         </div>
       </section>
+      <ScrollBtn />
       <BookLessonModal
         isOpen={bookLessonModal.isOpen}
         closeModal={bookLessonModal.closeModal}
         teacherInfo={chosenTeacher}
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition:Slide
       />
     </>
   );

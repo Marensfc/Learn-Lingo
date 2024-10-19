@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import clsx from 'clsx';
 import { useId } from 'react';
 import 'yup-phone-lite';
+import { toast } from 'react-toastify';
 
 const bookLessonSchema = yup.object().shape({
   reason: yup.string().required('You should choose something from the list'),
@@ -60,6 +61,9 @@ const BookLessonForm = ({ teacherInfo, closeModal }) => {
   const onSubmit = data => {
     reset();
     closeModal();
+    toast.success(
+      'We will contact you soon to confirm your trial lesson booking!'
+    );
   };
 
   return (

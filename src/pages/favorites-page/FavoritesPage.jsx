@@ -5,6 +5,7 @@ import TeachersList from '../../components/teachers-list/TeachersList';
 import BookLessonModal from '../../components/book-lesson-modal/BookLessonModal';
 import ScreenSaver from '../../components/screen-saver/ScreenSaver';
 import Loader from '../../components/loader/Loader';
+import ScrollBtn from '../../components/scroll-btn/ScrollBtn';
 
 import { useEffect, useState } from 'react';
 import { useModal } from '../../hooks/useModal';
@@ -22,9 +23,6 @@ import {
   getUserFavoriteTeachers,
   updateFavoriteTeachersInFirebase,
 } from '../../api/firebaseFunctions';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const FavoritesPage = () => {
   setBodyBgColor('#f8f8f8');
@@ -46,6 +44,8 @@ const FavoritesPage = () => {
   );
 
   useEffect(() => {
+    console.log('useEffect works');
+
     setIsLoading(true);
     const loadFavoriteTeachers = async () => {
       try {
@@ -115,23 +115,11 @@ const FavoritesPage = () => {
           {!isLoading && favoriteTeachers.length === 0 && <ScreenSaver />}
         </div>
       </section>
+      <ScrollBtn />
       <BookLessonModal
         isOpen={bookLessonModal.isOpen}
         closeModal={bookLessonModal.closeModal}
         teacherInfo={chosenTeacher}
-      />
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition:Slide
       />
     </>
   );

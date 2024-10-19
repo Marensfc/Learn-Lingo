@@ -145,3 +145,29 @@
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .heroTitle {
+    font-size: 32px;
+  }
+  .heroTextContentWrapper {
+    padding: 70px 32px;
+  }
+  .heroImgThumb {
+    height: 340px;
+  }
+  .statisticBarItem {
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    justify-content: center;
+  }
+  .statisticBarList {
+    padding: 40px 80px;
+  }
+  .statisticBarItemTitle {
+    text-align: center;
+  }
+  .statisticBarItemNumber {
+    font-size: 24px;
+  }
+}
