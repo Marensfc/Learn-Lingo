@@ -24,7 +24,7 @@ language tutors that have been added to favorites.
 ### Home page
 
 The home page contains interesting statistics and from there you can easily go
-to the page with teachers
+to the page with teachers.
 ![Web Application Home Page Screenshot](./src/assets/home-page.jpg?w=1000)
 
 ### Teachers' page
@@ -34,8 +34,9 @@ you want to see more detailed information about any teacher, click on the button
 "Read more". Then you will see teacher reviews, experiences, and you can also
 book a trial lesson with that teacher.
 
-> [!Important] add/delete feature is only available for authenticated users.
-> ![Teacher Page Screenshot](./src/assets/teachers-page.jpg?w=1000)
+**Important: add/delete feature is only available for authenticated users.**
+
+![Teacher Page Screenshot](./src/assets/teachers-page.jpg?w=1000)
 
 ### Favorites page
 
