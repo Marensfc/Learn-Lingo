@@ -42,7 +42,7 @@ book a trial lesson with that teacher.
 
 On this page, which is only available to authenticated users, you will see all
 the teachers you have added to your favorites. In everything else, the
-functionality is the same as on the page with teachers.
+functionality is the same as on the "Teachers page".
 ![Favorites page screenshot](./src/assets/favorites-page.jpg?w=1000)
 
 ## Tech-stack
