@@ -1,16 +1,22 @@
 import PrivateRoute from '../PrivateRoute';
-import HomePage from '../../pages/home-page/HomePage';
-import TeachersPage from '../../pages/teachers-page/TeachersPage';
-import FavoritesPage from '../../pages/favorites-page/FavoritesPage';
 import Layout from '../layout/Layout';
 import RefreshingLoader from '../refreshing-loader/RefreshingLoader';
+import Loader from '../loader/Loader';
 
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../../redux/auth/operations';
 import { useSelector } from 'react-redux';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
+
+const HomePage = lazy(() => import('../../pages/home-page/HomePage'));
+const TeachersPage = lazy(() =>
+  import('../../pages/teachers-page/TeachersPage')
+);
+const FavoritesPage = lazy(() =>
+  import('../../pages/favorites-page/FavoritesPage')
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -22,18 +28,20 @@ function App() {
 
   return (
     <Layout>
-      {isRefreshing ? (
-        <RefreshingLoader />
-      ) : (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/teachers" element={<TeachersPage />} />
-          <Route
-            path="/favorites"
-            element={<PrivateRoute component={<FavoritesPage />} />}
-          />
-        </Routes>
-      )}
+      <Suspense fallback={<Loader />}>
+        {isRefreshing ? (
+          <RefreshingLoader />
+        ) : (
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/teachers" element={<TeachersPage />} />
+            <Route
+              path="/favorites"
+              element={<PrivateRoute component={<FavoritesPage />} />}
+            />
+          </Routes>
+        )}
+      </Suspense>
     </Layout>
   );
 }
